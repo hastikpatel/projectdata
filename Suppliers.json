@@ -1,0 +1,141 @@
+{
+  "title": "Suppliers",
+  "description": "",
+  "javaType": "nz.co.iag.model.consumer.json.Suppliers",
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "Suppliers": {
+      "$ref": "#"
+    },
+    "OrderDetail": {
+      "title": "OrderDetail",
+      "description": "",
+      "javaType": "nz.co.iag.model.consumer.json.OrderDetail",
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "OrderID": {
+          "type": "integer"
+        },
+        "ProductID": {
+          "type": "integer"
+        },
+        "Quantity": {
+          "type": "integer"
+        },
+        "Discount": {
+          "type": "integer"
+        },
+        "PK_Product": {
+          "title": "Product",
+          "description": "",
+          "javaType": "nz.co.iag.model.consumer.json.Product",
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "ProductID": {
+              "type": "integer"
+            },
+            "SupplierID": {
+              "type": "integer"
+            },
+            "ProductName": {
+              "type": "string"
+            },
+            "UnitsOnOrder": {
+              "type": "integer"
+            },
+            "PK_Suppliers": {
+              "$ref": "#"
+            }
+          },
+          "required": [
+            "ProductID",
+            "SupplierID",
+            "ProductName",
+            "UnitsOnOrder",
+            "PK_Suppliers"
+          ]
+        }
+      },
+      "required": [
+        "OrderID",
+        "ProductID",
+        "Quantity",
+        "Discount",
+        "PK_Product"
+      ]
+    },
+    "Delivery": {
+      "title": "Delivery",
+      "description": "",
+      "javaType": "nz.co.iag.model.consumer.json.Delivery",
+      "$schema": "http://json-schema.org/draft-04/schema#",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "DeliveryID": {
+          "type": "integer"
+        },
+        "OrderID": {
+          "type": "integer"
+        },
+        "ProductID": {
+          "type": "integer"
+        },
+        "DeliveryDate": {
+          "type": "string"
+        },
+        "Address": {
+          "type": "string"
+        },
+        "PK_Product": {
+          "$ref": "#/definitions/OrderDetail/properties/PK_Product"
+        }
+      },
+      "required": [
+        "DeliveryID",
+        "OrderID",
+        "ProductID",
+        "DeliveryDate",
+        "Address",
+        "PK_Product"
+      ]
+    },
+    "Product": {
+      "$ref": "#/definitions/OrderDetail/properties/PK_Product"
+    }
+  },
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "SupplierID": {
+      "type": "integer"
+    },
+    "CompanyName": {
+      "type": "string"
+    },
+    "Address": {
+      "type": "string"
+    },
+    "City": {
+      "type": "string"
+    },
+    "Region": {
+      "type": "string"
+    },
+    "Phone": {
+      "type": "integer"
+    }
+  },
+  "required": [
+    "SupplierID",
+    "CompanyName",
+    "Address",
+    "City",
+    "Region",
+    "Phone"
+  ]
+}
